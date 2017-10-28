@@ -39,34 +39,36 @@ body {
 
 #todo_list {
     list-style: none;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0px;
+    margin: 10px 0px;
 }
 
 .todo_item {
     font-size: 20px;
     margin-bottom: 10px;
+    position: relative;
+    padding: 10px 30px 10px 0px;
+    display: block;
 }
 
 .todo_checkbox {
-    float: left
-    margin: auto 0px;
 }
 
 .todo_label {
-    font-size: 30px;
+    word-wrap: break-word;
+    font-size: 24px;
 }
 
 .delete_button {
     display: none;
     background: url(delete.svg) no-repeat;
     background-size: 25px 25px;
+    position: absolute;
     height: 25px;
     width: 25px;
-    float: right;
+    right: 5px;
+    top: 5px;
     cursor: pointer;
-    margin-top: 0px;
-    margin-right: 10px;
 }
 
 #todo_list li:hover .delete_button {
@@ -81,4 +83,9 @@ body {
     border-bottom-right-radius: inherit;
     margin-top: 10px;
     font-size: 16px;
+}
+
+/* Cool! Always wanted to know how they do it... */
+#todo_main input::-webkit-input-placeholder {
+	font-style: italic;
 }

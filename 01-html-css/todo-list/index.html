@@ -7,15 +7,16 @@
         <div id="todo_main">
             <header id="todo_header">
                 <h1>Todos</h1>
-                <input type="text" id="todo_input" placeholder="What needs to be done?" required>
+                <input type="text" id="todo_input" placeholder="What needs to be done?" required autofocus>
             </header>
+
             <section id="todo_section">
                 <input type="checkbox" id="mark_all">
                 <label for="mark_all">Mark all as complete</label>
                 <ul id="todo_list">
-                    <li>
-                        <!-- this is a stab because I'm to lazy to generate in manually -->
-                        <div class="todo_item" style="display: none">
+                    <li id="stub" style="display: none">
+                        <!-- this is a stub because I'm to lazy to generate in manually -->
+                        <div class="todo_item">
                             <input type="checkbox" class="todo_checkbox">
                             <label class="todo_label"></label>
                             <a class="delete_button"></a>
@@ -23,9 +24,12 @@
                     </li>
                 </ul>
             </section>
+
             <div style="clear:both;"></div>
-            <div id="footer">
-            </div>
+
+            <div id="footer"></div>
         </div>
+
+        <script src="script.js"></script>
     </body>
 </html>
