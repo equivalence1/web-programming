@@ -1,0 +1,35 @@
+html {
+    background: #eeeeee; /* same as on origin page */
+}
+
+body {
+    margin-top: 0 !important;
+}
+
+#todo_main {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    box-shadow: 0px 0px 5px grey;
+}
+
+#todo_header {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#todo_input {
+    width: 90%;
+    height: 50px;
+    font-size: 24px;
+    margin: 0px auto 10px;
+}
+
+#footer {
+    background: #f4fce8; /* same as on origin page */
+    height: 20px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
