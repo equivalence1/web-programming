@@ -1,7 +1,52 @@
-var todo_cnt = 0;
+if(typeof(String.prototype.trim) === "undefined")
+{
+    String.prototype.trim = function() 
+    {
+        return String(this).replace(/^\s+|\s+$/g, '');
+    };
+}
 
-function change_todo_cnt(chg) {
-    todo_cnt += chg;
+var items_present = 0;
+var mark_all = document.getElementById("mark_all");
+
+function change_items_present_cnt(chg) {
+    items_present += chg;
+
+    var footer = document.getElementById("footer");
+    var todo_section = document.getElementById("todo_section");
+    if (items_present == 0) {
+        footer.style.display = "none";
+        todo_section.style.display = "none";
+    } else {
+        footer.style.display = "block";
+        todo_section.style.display = "block";
+    }
+}
+
+function recalc_todo_cnt() {
+    var todo_cnt = 0;
+    var checkboxes = document.getElementsByClassName("todo_checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (i == 0) // skip stub
+            continue;
+        if (!checkboxes[i].checked)
+            todo_cnt++;
+    }
+
+    var cnt_div = document.getElementById("todo_cnt");
+    var item_txt = "item";
+    if (items_present > 1)
+        item_txt = "items";
+    cnt_div.innerHTML = "<b>" + todo_cnt + "</b> " + item_txt + " left";
+
+    if (todo_cnt == 0)
+        mark_all.checked = true;
+    else
+        mark_all.checked = false;
+
+    if (todo_cnt != items_present) {
+// show create button;
+    }
 }
 
 function duplicate() {
@@ -13,18 +58,27 @@ function duplicate() {
 }
 
 function delete_item(item) {
+    recalc_todo_cnt();
     item.remove();
-    change_todo_cnt(-1);
+    change_items_present_cnt(-1);
 }
 
 function create_item(todo_input) {
+    if (todo_input.value.trim() == "")
+        return;
+
     var item = duplicate();
     item.getElementsByClassName("todo_label")[0].innerHTML = todo_input.value;
     item.style.display = "block";
     item.getElementsByClassName("delete_button")[0].onclick = function() {
         delete_item(item);
     }
-    change_todo_cnt(1);
+    item.getElementsByClassName("todo_checkbox")[0].onclick = function() {
+        recalc_todo_cnt();
+    }
+
+    change_items_present_cnt(1);
+    recalc_todo_cnt();
 }
 
 var todo_input = document.getElementById("todo_input");
@@ -37,9 +91,15 @@ todo_input.onkeypress = function(e) {
     }
 }
 
-var mark_all = document.getElementById("mark_all");
 mark_all.onclick = function() {
     var checkboxes = document.getElementsByClassName("todo_checkbox");
-    for (var i in checkboxes)
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (i == 0) // skip stub
+            continue;
         checkboxes[i].checked = mark_all.checked;
+    }
+    recalc_todo_cnt();
 }
+
+change_items_present_cnt(0);
+recalc_todo_cnt();

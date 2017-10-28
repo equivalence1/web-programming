@@ -1,5 +1,5 @@
 html {
-    background: #eeeeee; /* same as on origin page */
+    background: #eeeeee;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
 #todo_main {
     max-width: 600px;
     margin: 0 auto;
+    padding-bottom: 20px;
     background: white;
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
@@ -32,7 +33,6 @@ body {
 #todo_section {
     width: 90%;
     margin: 0px auto;
-    background: yellow;
     display: block;
     font-size: 16px;
 }
@@ -41,6 +41,14 @@ body {
     list-style: none;
     padding: 0px;
     margin: 10px 0px;
+}
+
+#todo_list li {
+    border-bottom: solid 1px #cccccc;
+}
+
+#todo_list li:last-of-type {
+    border-bottom: none;
 }
 
 .todo_item {
@@ -76,13 +84,19 @@ body {
 }
 
 #footer {
-    background: #f4fce8; /* same as on origin page */
-    height: 20px;
+    background: #f4fce8;
+    height: 30px;
     border-top: solid 1px #eeeeee;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
-    margin-top: 10px;
+    margin-bottom: -20px;
     font-size: 16px;
+}
+
+#todo_cnt {
+    width: 90%;
+    margin: 0px auto;
+    padding-top: 5px;
 }
 
 /* Cool! Always wanted to know how they do it... */
