@@ -9,8 +9,21 @@
                 <h1>Todos</h1>
                 <input type="text" id="todo_input" placeholder="What needs to be done?" required>
             </header>
-            <div id="todo_list">
-            </div>
+            <section id="todo_section">
+                <input type="checkbox" id="mark_all">
+                <label for="mark_all">Mark all as complete</label>
+                <ul id="todo_list">
+                    <li>
+                        <!-- this is a stab because I'm to lazy to generate in manually -->
+                        <div class="todo_item" style="display: none">
+                            <input type="checkbox" class="todo_checkbox">
+                            <label class="todo_label"></label>
+                            <a class="delete_button"></a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div style="clear:both;"></div>
             <div id="footer">
             </div>
         </div>
