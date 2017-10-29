@@ -21,6 +21,8 @@ function change_items_present_cnt(chg) {
         footer.style.display = "block";
         todo_section.style.display = "block";
     }
+
+    recalc_todo_cnt();
 }
 
 function recalc_todo_cnt() {
