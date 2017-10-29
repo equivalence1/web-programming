@@ -26,18 +26,16 @@ function change_items_present_cnt(chg) {
 function recalc_todo_cnt() {
     var todo_cnt = 0;
     var checkboxes = document.getElementsByClassName("todo_checkbox");
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (i == 0) // skip stub
-            continue;
+    for (var i = 1; i < checkboxes.length; i++) {
         if (!checkboxes[i].checked)
             todo_cnt++;
     }
 
     var cnt_div = document.getElementById("todo_cnt");
-    var item_txt = "item";
+    var item_txt = " item";
     if (items_present > 1)
-        item_txt = "items";
-    cnt_div.innerHTML = "<b>" + todo_cnt + "</b> " + item_txt + " left";
+        item_txt = " items";
+    cnt_div.innerHTML = "<b>" + todo_cnt + "</b>" + item_txt + " left";
 
     if (todo_cnt == 0)
         mark_all.checked = true;
@@ -45,7 +43,23 @@ function recalc_todo_cnt() {
         mark_all.checked = false;
 
     if (todo_cnt != items_present) {
-// show create button;
+        if (items_present - todo_cnt < 2)
+            item_txt = " item";
+        else
+            item_txt = " items";
+        cnt_div.innerHTML += "<a id=\"clear_checked\">Clear " + (items_present - todo_cnt) + item_txt + "</a>";
+        var clear_checked = document.getElementById("clear_checked");
+        clear_checked.onclick = function() {
+            var checkboxes = document.getElementsByClassName("todo_checkbox");
+            var items = document.getElementsByClassName("todo_item");
+            var i = checkboxes.length - 1;
+            while (i != 0) {
+                if (checkboxes[i].checked)
+                    items[i].getElementsByClassName("delete_button")[0].click();
+                i--;
+            }
+            recalc_todo_cnt();
+        }
     }
 }
 
@@ -93,9 +107,7 @@ todo_input.onkeypress = function(e) {
 
 mark_all.onclick = function() {
     var checkboxes = document.getElementsByClassName("todo_checkbox");
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (i == 0) // skip stub
-            continue;
+    for (var i = 1; i < checkboxes.length; i++) {
         checkboxes[i].checked = mark_all.checked;
     }
     recalc_todo_cnt();

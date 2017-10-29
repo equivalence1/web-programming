@@ -99,6 +99,19 @@ body {
     padding-top: 5px;
 }
 
+#clear_checked {
+    height: 20px;
+    border-radius: 1em;
+    background: #dce3d1;
+    float: right;
+    cursor: pointer;
+    padding: 0px 5px;
+}
+
+#clear_checked:hover {
+    background: rgb(202, 210, 191);
+}
+
 /* Cool! Always wanted to know how they do it... */
 #todo_main input::-webkit-input-placeholder {
 	font-style: italic;
